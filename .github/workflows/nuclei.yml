@@ -5,6 +5,11 @@ on:
     - cron: '0 0 * * *'
   workflow_dispatch:
 
+permissions:
+  contents: read
+  issues: write
+  security-events: write
+
 jobs:
   nuclei-scan:
     runs-on: ubuntu-latest
@@ -14,7 +19,7 @@ jobs:
       - name: Nuclei - Vulnerability Scan
         uses: projectdiscovery/nuclei-action@main
         with:
-          target: https://www.google.com/
+          target: https://www.naorisprotocol.com/
           github-report: true
           github-token: ${{ secrets.GITHUB_TOKEN }}
 
